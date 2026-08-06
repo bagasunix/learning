@@ -14,29 +14,41 @@ package stackqueue
 //	q.Pop()  -> 1
 //	q.Empty() -> false
 type MyQueue struct {
-	// TODO: Implementasi di sini
+	inbox  []int
+	outbox []int
 }
 
 func NewQueue() *MyQueue {
-	// TODO: Implementasi di sini
-	return nil
+	return &MyQueue{}
 }
 
 func (q *MyQueue) Push(x int) {
-	// TODO: Implementasi di sini
+	q.inbox = append(q.inbox, x)
+}
+
+func (q *MyQueue) transfer() {
+	if len(q.outbox) == 0 {
+		for len(q.inbox) > 0 {
+			n := len(q.inbox)
+			q.outbox = append(q.outbox, q.inbox[n-1])
+			q.inbox = q.inbox[:n-1]
+		}
+	}
 }
 
 func (q *MyQueue) Pop() int {
-	// TODO: Implementasi di sini
-	return 0
+	q.transfer()
+	n := len(q.outbox)
+	val := q.outbox[n-1]
+	q.outbox = q.outbox[:n-1]
+	return val
 }
 
 func (q *MyQueue) Peek() int {
-	// TODO: Implementasi di sini
-	return 0
+	q.transfer()
+	return q.outbox[len(q.outbox)-1]
 }
 
 func (q *MyQueue) Empty() bool {
-	// TODO: Implementasi di sini
-	return true
+	return len(q.inbox) == 0 && len(q.outbox) == 0
 }

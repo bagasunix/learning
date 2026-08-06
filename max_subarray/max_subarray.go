@@ -11,6 +11,17 @@ package maxsubarray
 //	maxSubArray([]int{1})                     -> 1
 //	maxSubArray([]int{5,4,-1,7,8})            -> 23
 func maxSubArray(nums []int) int {
-	// TODO: Implementasi di sini
-	return 0
+	maxSum := nums[0]
+	cur := nums[0]
+	for _, v := range nums[1:] {
+		if cur < 0 {
+			cur = v
+		} else {
+			cur += v
+		}
+		if cur > maxSum {
+			maxSum = cur
+		}
+	}
+	return maxSum
 }

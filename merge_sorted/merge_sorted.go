@@ -11,6 +11,18 @@ package mergesorted
 //
 // Hint: Two-pointer technique, O(n+m).
 func mergeSorted(a, b []int) []int {
-	// TODO: Implementasi di sini
-	return nil
+	result := make([]int, 0, len(a)+len(b))
+	i, j := 0, 0
+	for i < len(a) && j < len(b) {
+		if a[i] <= b[j] {
+			result = append(result, a[i])
+			i++
+		} else {
+			result = append(result, b[j])
+			j++
+		}
+	}
+	result = append(result, a[i:]...)
+	result = append(result, b[j:]...)
+	return result
 }

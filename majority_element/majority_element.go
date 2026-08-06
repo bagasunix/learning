@@ -12,6 +12,16 @@ package majorityelement
 //
 // Bonus: Selesaikan dalam O(n) time dan O(1) space (Boyer-Moore Voting).
 func majorityElement(nums []int) int {
-	// TODO: Implementasi di sini
-	return 0
+	candidate, count := nums[0], 1
+	for _, v := range nums[1:] {
+		if count == 0 {
+			candidate = v
+			count = 1
+		} else if v == candidate {
+			count++
+		} else {
+			count--
+		}
+	}
+	return candidate
 }

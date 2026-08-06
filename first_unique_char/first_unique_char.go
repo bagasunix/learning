@@ -11,6 +11,14 @@ package firstuniquechar
 //	firstUniqChar("loveleetcode") -> 2  ('v')
 //	firstUniqChar("aabb")         -> -1
 func firstUniqChar(s string) int {
-	// TODO: Implementasi di sini
+	var freq [26]int
+	for _, c := range s {
+		freq[c-'a']++
+	}
+	for i, c := range s {
+		if freq[c-'a'] == 1 {
+			return i
+		}
+	}
 	return -1
 }

@@ -12,6 +12,23 @@ package rotatearray
 //
 // Bonus: Selesaikan dengan O(1) extra space (3-reverse trick).
 func rotate(nums []int, k int) {
-	// TODO: Implementasi di sini
-	// Modifikasi nums in-place
+	n := len(nums)
+	if n == 0 {
+		return
+	}
+	k = k % n
+	if k == 0 {
+		return
+	}
+	reverse(nums, 0, n-1)
+	reverse(nums, 0, k-1)
+	reverse(nums, k, n-1)
+}
+
+func reverse(nums []int, lo, hi int) {
+	for lo < hi {
+		nums[lo], nums[hi] = nums[hi], nums[lo]
+		lo++
+		hi--
+	}
 }
