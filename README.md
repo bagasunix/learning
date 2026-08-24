@@ -86,7 +86,11 @@ Buka `solutions/solutions.go` untuk implementasi lengkap semua soal.
 | 17 | Climb Stairs       | DP / fibonacci variant              |
 | 18 | Majority Element   | Boyer-Moore voting (O(1) space)     |
 | 19 | Rotate Array       | 3-reverse trick (O(1) space)        |
-| 20 | String Compression | Run-length encoding                |
+| 20 | String Compression | Run-length encoding + bonus         |
+| 21 | Reverse Integer    | Math, overflow check (MaxInt32)     |
+| 22 | Reverse Words      | strings.Fields, two-pointer         |
+| 23 | Sort Array         | Bubble sort + insertion sort        |
+| 24 | Top K Frequent     | Hashmap + sort, O(n log n)          |
 
 ## Setup Go
 

@@ -9,8 +9,9 @@ func TestCompressBasic(t *testing.T) {
 }
 
 func TestCompressSingleChars(t *testing.T) {
-	if compress("abc") != "a1b1c1" {
-		t.Errorf("got %s, want a1b1c1", compress("abc"))
+	// "a1b1c1" (6 chars) lebih panjang dari "abc" (3 chars) -> kembalikan asli (bonus)
+	if compress("abc") != "abc" {
+		t.Errorf("got %s, want abc", compress("abc"))
 	}
 }
 
@@ -27,8 +28,9 @@ func TestCompressAllSame(t *testing.T) {
 }
 
 func TestCompressSingleChar(t *testing.T) {
-	if compress("a") != "a1" {
-		t.Errorf("got %s, want a1", compress("a"))
+	// "a1" (2 chars) lebih panjang dari "a" (1 char) -> kembalikan asli (bonus)
+	if compress("a") != "a" {
+		t.Errorf("got %s, want a", compress("a"))
 	}
 }
 
