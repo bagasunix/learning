@@ -2,6 +2,7 @@ package stringcompression
 
 import (
 	"fmt"
+	"strconv"
 	"strings"
 )
 
@@ -83,4 +84,35 @@ func compress(s string) string {
 		return s
 	}
 	return result
+}
+
+// ============================================================
+// Implementasi Kompresi String
+// ============================================================
+func compressString(s string) string {
+	if len(s) == 0 {
+		return ""
+	}
+
+	var sb strings.Builder
+	count := 1
+
+	for i := 1; i < len(s); i++ {
+		if s[i] == s[i-1] {
+			count++
+		} else {
+			sb.WriteByte(s[i-1])
+			sb.WriteString(strconv.Itoa(count))
+			count = 1
+		}
+	}
+	// tulis karakter terakhir
+	sb.WriteByte(s[len(s)-1])
+	sb.WriteString(strconv.Itoa(count))
+
+	compressed := sb.String()
+	if len(compressed) >= len(s) {
+		return s
+	}
+	return compressed
 }

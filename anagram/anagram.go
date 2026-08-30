@@ -93,3 +93,22 @@ func isAnagramCounter(a, b string) bool {
 	}
 	return true
 }
+
+// ============================================================
+// Struktur kata yang terdiri dari abjad yang sama
+// ============================================================
+func sameCharStructure(a, b string) bool {
+	if len(a) != len(b) {
+		return false
+	}
+
+	var countA, countB [256]int
+	for i := 0; i < len(a); i++ {
+		countA[a[i]]++
+	}
+	for i := 0; i < len(b); i++ {
+		countB[b[i]]++
+	}
+
+	return countA == countB
+}
