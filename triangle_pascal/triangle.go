@@ -112,7 +112,9 @@ func RunCustomPascalSimple(n int) {
 
 func main() {
 	RunCustomPascal(6)
+	fmt.Println(" ")
 	RunCustomPascalSimple(6)
+	fmt.Println(" ")
 
 	// Contoh penggunaan triangle Pascal dengan jumlah baris yang berbeda
 	pascal := generate(15)
