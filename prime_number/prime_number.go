@@ -133,3 +133,23 @@ func sumOfPrimes(n int) int {
 	}
 	return sum
 }
+
+func RandomPrime(n int) int {
+	sum := 0
+	for i := 2; i <= n; i++ {
+		if isPrime(i) {
+			sum += i
+		}
+	}
+	return sum
+}
+
+func RandomPrimes(n int) []int {
+	var listPrime []int
+	for i := 2; i <= n; i++ {
+		if isPrime(i) {
+			listPrime = append(listPrime, i)
+		}
+	}
+	return listPrime
+}
