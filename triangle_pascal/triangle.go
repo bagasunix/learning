@@ -27,13 +27,6 @@ func innerSum(row []int) int {
 	return sum
 }
 
-func formatRow(row []int) string {
-	parts := make([]string, len(row))
-	for j, v := range row {
-		parts[j] = strconv.Itoa(v)
-	}
-	return strings.Join(parts, " ")
-}
 
 func parity(v int) string {
 	if v%2 == 0 {
@@ -54,15 +47,7 @@ func RunCustomPascal(n int) {
 		return
 	}
 
-	tri := make([][]int, n)
-	for i := 0; i < n; i++ {
-		tri[i] = make([]int, i+1)
-		tri[i][0], tri[i][i] = 1, 1
-		for j := 1; j < i; j++ {
-			tri[i][j] = tri[i-1][j-1] + tri[i-1][j]
-		}
-	}
-
+	tri := generate(n)
 	w := len(strconv.Itoa(tri[n-1][(n-1)/2])) + 3
 
 	for i := n - 1; i >= 0; i-- {
@@ -87,14 +72,7 @@ func RunCustomPascalSimple(n int) {
 		return
 	}
 
-	tri := make([][]int, n)
-	for i := range n {
-		tri[i] = make([]int, i+1)
-		tri[i][0], tri[i][i] = 1, 1
-		for j := 1; j < i; j++ {
-			tri[i][j] = tri[i-1][j-1] + tri[i-1][j]
-		}
-	}
+	tri := generate(n)
 
 	for i := n - 1; i >= 0; i-- {
 		sum := 0

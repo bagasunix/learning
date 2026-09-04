@@ -62,23 +62,6 @@ func fibonacci(n int) []int {
 	return result
 }
 
-func fib1(n int) int {
-	if n <= 0 {
-		return 0
-	}
-
-	if n == 1 {
-		return 1
-	}
-
-	a, b := 0, 1
-	for i := 2; i < n; i++ {
-		a, b = b, a+b
-	}
-
-	return b
-}
-
 // fibRecursive: O(2^n) — untuk demo rekursi saja, bukan production
 func fibRecursive(n int) int {
 	if n < 2 {
